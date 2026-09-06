@@ -68,8 +68,9 @@ npm run build      # output tĩnh trong dist/
 
 - **Danh tính, skills, projects, certifications, publications, contact** → `src/config/site.ts`
   (đặt `contact.linkedin` thành URL để hiện dòng LinkedIn, để `null` là ẩn).
-- **CVE** → `src/data/cves.ts`. Mỗi record cần `reference` (link NVD); thêm `writeup: '<slug>'` khi đã có bài
-  trong `src/content/posts/` thì bảng sẽ trỏ vào bài đó thay vì NVD.
+- **CVE** → `src/data/cves.ts`. Mỗi record cần `reference` (link advisory công khai: NVD, Vulners...); thêm
+  `writeup: '<slug>'` khi đã có bài trong `src/content/posts/` thì bảng trỏ vào bài đó thay vì advisory.
+  Mảng lưu theo thứ tự cũ → mới; trang chủ render mới nhất trước và thu gọn còn 2 dòng.
 - **Career / papers / credentials cho `/hall-of-fame`** → `src/data/hall-of-fame.ts` (nhóm rỗng tự ẩn).
 - **Write-up / blog** → Markdown trong `src/content/posts/`, `type` là `writeup` hoặc `blog`, `slug` duy nhất,
   để `draft: true` cho tới khi sẵn sàng. Template: `example-writeup.md`, `example-blog.md`.

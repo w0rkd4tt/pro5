@@ -17,6 +17,11 @@ it('keeps every row visible without JavaScript', () => {
   expect(homepage).toContain('aria-controls="cert-list" hidden');
 });
 
+it('renders the CVE table newest first by default', () => {
+  expect(homepage).toContain('cveOrder(b.cve) - cveOrder(a.cve)');
+  expect(homepage).toContain('<option value="newest-first">Newest → Oldest</option>');
+});
+
 it('hides only the items past the second one while collapsed', () => {
   const css = readFileSync(new URL('../src/styles/global.css', import.meta.url), 'latin1');
   expect(css).toContain('.cve-table-wrap.is-collapsed tbody tr:nth-child(n+3),.cert-list.is-collapsed li:nth-child(n+3){display:none}');
