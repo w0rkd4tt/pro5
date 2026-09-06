@@ -1,11 +1,11 @@
 export const site = {
-  name: 'Dat Nguyen',
+  name: 'Nguyen Le Quoc Dat',
   nickname: 'w0rkd4tt',
   terminalIdentity: 'w0rkd4tt@portfolio:~$',
   summary: 'Offensive security and security tooling. Evidence before claims.',
   cvHref: null,
   socialLinks: [
-    { label: 'Email', href: 'mailto:anhnlq.infosec@gmail.com' },
+    { label: 'Email', href: 'mailto:datnguyenlequoc2001@gmail.com' },
     { label: 'GitHub', href: 'https://github.com/w0rkd4tt' }
   ],
   giscus: null
@@ -62,8 +62,8 @@ export const portfolio = {
     }
   ] as readonly { venue: string; title: string; description: string; url: string; linkLabel: string }[],
   contact: {
-    email: 'mailto:anhnlq.infosec@gmail.com',
-    label: 'anhnlq.infosec@gmail.com',
+    email: 'mailto:datnguyenlequoc2001@gmail.com',
+    label: 'datnguyenlequoc2001@gmail.com',
     github: 'https://github.com/w0rkd4tt',
     githubLabel: 'github.com/w0rkd4tt',
     // Set to a profile URL to show the row; null hides it.
