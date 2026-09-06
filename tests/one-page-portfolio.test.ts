@@ -17,6 +17,5 @@ it('defines the approved one-page navigation in visual order', () => {
 it('lists my certifications and exposes contact', () => {
   expect(portfolio.certifications.length).toBeGreaterThan(0);
   expect(portfolio.certifications.map((certification) => certification.title)).toContain('OffSec Web Expert (OSWE)');
-  expect(portfolio.achievements).toHaveLength(0);
   expect(portfolio.contact.email).toMatch(/^mailto:/);
 });

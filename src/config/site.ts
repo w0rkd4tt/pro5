@@ -40,8 +40,6 @@ export const portfolio = {
     { title: 'Certified Web Security Expert (CWSE)', issuer: '' },
     { title: 'Google Cybersecurity Certificate', issuer: 'Google' }
   ] as readonly { title: string; issuer: string }[],
-  // TODO: add awards / CTF results here.
-  achievements: [] as readonly string[],
   projects: [
     { title: 'Sharingan', description: 'Automated web security scanner chaining recon tooling with Burp Suite scanning and Telegram vulnerability alerts.', language: 'Python', url: 'https://github.com/w0rkd4tt/Sharingan' },
     { title: 'burp-plugin', description: 'Burp Suite extension for automated SQL injection detection with context-aware payload generation and optional AI-assisted analysis.', language: 'Java', url: 'https://github.com/w0rkd4tt/burp-plugin' },

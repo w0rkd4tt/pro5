@@ -1,37 +1,90 @@
-# pro5 — personal security portfolio
+<h1 align="center">w0rkd4tt — security portfolio</h1>
 
-A static, terminal-styled portfolio for security work: tooling, research notes, CVE write-ups, and blog posts.
-Built with [Astro](https://astro.build), deployed to GitHub Pages at `https://w0rkd4tt.github.io/pro5`.
+<p align="center">
+  <a href="https://w0rkd4tt.github.io/pro5/"><b>w0rkd4tt.github.io/pro5</b></a><br/>
+  <sub>Offensive security · vulnerability research · security tooling</sub>
+</p>
 
-Forked and reworked from [doanmanhducz/LOCKIN](https://github.com/doanmanhducz/LOCKIN) — the layout and terminal
-theme come from there; identity, content, branding, and data are my own.
+---
 
-## Local development
+## Giới thiệu
+
+Đây là portfolio cá nhân của **Nguyen Le Quoc Dat** (`w0rkd4tt`) — một trang tĩnh, giao diện terminal, dùng để
+tập hợp lại những thứ đã làm thay vì để chúng nằm rải rác trên GitHub và trong ổ cứng:
+
+- **Research** — các CVE đã công bố, kèm link NVD và write-up khi có.
+- **Publications** — bài báo khoa học đã đăng.
+- **Projects** — công cụ tự viết: scanner, Burp extension, MCP server cho AI agent, ML cho malware.
+- **Certifications** — chứng chỉ bảo mật.
+- **Write-Ups / Blog** — bài phân tích lỗ hổng và ghi chép nghề.
+
+Trang được build bằng [Astro](https://astro.build) (static, không backend, không tracker), deploy tự động lên
+GitHub Pages mỗi lần push `main`.
+
+## Tại sao trông như cái terminal
+
+Vì đó là nơi phần lớn công việc thật sự diễn ra. Layout và theme kế thừa từ
+[doanmanhducz/LOCKIN](https://github.com/doanmanhducz/LOCKIN) — cảm ơn tác giả gốc.
+Toàn bộ danh tính, nội dung, dữ liệu, branding và phần nền binary stream là của riêng repo này.
+
+## Tech stack
+
+| Thành phần | Lựa chọn |
+|---|---|
+| Framework | Astro 5, `output: 'static'` |
+| Nội dung | Markdown qua Astro Content Collections (có schema Zod) |
+| Style | Một file CSS thuần, không framework |
+| Nền động | 2 canvas: constellation + binary stream (tôn trọng `prefers-reduced-motion`) |
+| Test | Vitest |
+| Deploy | GitHub Actions → GitHub Pages, base path `/pro5` |
+
+## Cấu trúc
+
+```
+src/
+  config/site.ts        # danh tính, skills, projects, certifications, publications, contact
+  data/cves.ts          # bảng CVE trên trang chủ
+  data/hall-of-fame.ts  # career path, papers, credentials cho /hall-of-fame
+  content/posts/        # write-ups + blog (Markdown)
+  content/research/     # research notes (Markdown)
+  components/           # card, filter, nền canvas, giscus
+  layouts/BaseLayout.astro
+  pages/                # /, /about, /research, /writeups, /blog, /hall-of-fame, 404
+  lib/paths.ts          # sitePath() — mọi link nội bộ phải đi qua đây
+tests/                  # vitest: config, nội dung, path, nền
+```
+
+## Chạy local
 
 ```bash
 npm install
 npm run dev        # http://localhost:4321/pro5
 npm run check      # astro check (types + templates)
 npm test -- --run  # vitest
-npm run build      # static output in dist/
+npm run build      # output tĩnh trong dist/
 ```
 
-## Publishing content
+## Thêm nội dung
 
-- **Identity, skills, projects, certifications, contact** — `src/config/site.ts`. Set `contact.linkedin` to a URL to
-  show that row; leave it `null` to hide it.
-- **CVE table on the homepage** — `src/data/cves.ts`. Every record needs an NVD `reference`; add `writeup` once a post
-  with that `slug` exists in `src/content/posts/`, and the table links there instead of NVD.
-- **Career, papers, credentials** — `src/data/hall-of-fame.ts` (rendered on `/hall-of-fame`, empty groups are skipped).
-- **Write-ups and blog posts** — Markdown in `src/content/posts/`. Set `type` to `writeup` or `blog`, keep a unique
-  `slug`, and leave `draft: true` until it is ready. Templates: `example-writeup.md`, `example-blog.md`.
-- **Research notes** — Markdown in `src/content/research/`. Template: `example-note.md`.
-- **Cover images** — `public/images/posts/`, referenced as `coverImage: /images/posts/your-file.png`.
-- **Comments** — off by default. Create a GitHub Discussions category and put the Giscus IDs in `site.giscus`.
+- **Danh tính, skills, projects, certifications, publications, contact** → `src/config/site.ts`
+  (đặt `contact.linkedin` thành URL để hiện dòng LinkedIn, để `null` là ẩn).
+- **CVE** → `src/data/cves.ts`. Mỗi record cần `reference` (link NVD); thêm `writeup: '<slug>'` khi đã có bài
+  trong `src/content/posts/` thì bảng sẽ trỏ vào bài đó thay vì NVD.
+- **Career / papers / credentials cho `/hall-of-fame`** → `src/data/hall-of-fame.ts` (nhóm rỗng tự ẩn).
+- **Write-up / blog** → Markdown trong `src/content/posts/`, `type` là `writeup` hoặc `blog`, `slug` duy nhất,
+  để `draft: true` cho tới khi sẵn sàng. Template: `example-writeup.md`, `example-blog.md`.
+- **Research note** → `src/content/research/`. Template: `example-note.md`.
+- **Ảnh cover** → `public/images/posts/`, khai báo `coverImage: /images/posts/ten-file.png`.
+- **Comment** → mặc định tắt. Tạo category trong GitHub Discussions rồi điền Giscus IDs vào `site.giscus`.
 
-Every internal link must go through `sitePath()` from `src/lib/paths.ts` so the `/pro5` base path stays correct.
+> Mọi link nội bộ phải gọi `sitePath()` trong `src/lib/paths.ts` để base path `/pro5` không bị vỡ.
 
 ## Deploy
 
-Push to `main`; `.github/workflows/deploy.yml` runs check, tests, and build, then publishes to GitHub Pages.
-Enable Pages for the repo with source **GitHub Actions**.
+Push lên `main` là xong: `.github/workflows/deploy.yml` chạy `check` → `test` → `build` rồi publish lên
+GitHub Pages (Settings → Pages → Source: **GitHub Actions**).
+
+## License
+
+Nội dung (bài viết, dữ liệu CVE, thông tin cá nhân) thuộc về tác giả. Phần code kế thừa từ upstream giữ
+nguyên điều khoản của repo gốc.

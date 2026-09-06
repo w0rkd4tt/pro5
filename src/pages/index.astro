@@ -33,8 +33,8 @@ import { cveRecords, cveNumber } from '../data/cves';
   </section>
 
   <section class="section reveal" id="certifications" aria-labelledby="certifications-title">
-    <header class="section-title"><p>$ cat credentials.log</p><h2 id="certifications-title">Certifications & Achievements</h2><i></i></header>
-    <div class="cert-groups"><article class="cert-category"><h3>Certifications</h3>{portfolio.certifications.length === 0 ? <p class="empty-state">No certificates indexed yet.</p> : <ul class="achievement-list">{portfolio.certifications.map((certification) => <li>{certification.title}{certification.issuer && <span class="muted"> — {certification.issuer}</span>}</li>)}</ul>}</article><article class="cert-category"><h3>Achievements</h3>{portfolio.achievements.length === 0 ? <p class="empty-state">No achievements indexed yet.</p> : <ul class="achievement-list">{portfolio.achievements.map((achievement) => <li>{achievement}</li>)}</ul>}</article></div>
+    <header class="section-title"><p>$ cat credentials.log</p><h2 id="certifications-title">Credentials</h2><i></i></header>
+    <div class="cert-groups"><article class="cert-category"><h3>Certifications</h3>{portfolio.certifications.length === 0 ? <p class="empty-state">No certificates indexed yet.</p> : <ul class="achievement-list">{portfolio.certifications.map((certification) => <li>{certification.title}{certification.issuer && <span class="muted"> — {certification.issuer}</span>}</li>)}</ul>}</article></div>
   </section>
 
   <section class="section reveal" id="projects" aria-labelledby="projects-title">
