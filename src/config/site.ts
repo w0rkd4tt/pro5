@@ -52,8 +52,15 @@ export const portfolio = {
     { title: 'Totolink X6000R', description: 'Command injection analysis of CVE-2025-52284 in the Totolink X6000R router firmware, from firmware unpacking to unauthenticated RCE.', language: 'Research', url: 'https://github.com/w0rkd4tt/Totolink' },
     { title: 'note-pentest', description: 'Reference wiki for penetration testing: service and protocol enumeration, web vulnerability analysis, tooling, hardening, and CPTS kill-chain notes.', language: 'Markdown', url: 'https://github.com/w0rkd4tt/note-pentest' }
   ],
-  // TODO: add papers / talks here.
-  publications: [] as readonly { venue: string; title: string; description: string; url: string; linkLabel: string }[],
+  publications: [
+    {
+      venue: 'Journal of Science and Technology on Information Security · No. 3.CS (26), 2025',
+      title: 'AI-Enhanced SQL Injection Detection Framework: A Novel Approach Combines LLMs with Traditional Fuzzing to Improve Web Application Vulnerability Detection',
+      description: 'AESIDF pairs an LLM with parallel fuzzing for semantic SQL injection analysis. Across 26 PortSwigger, DVWA, and OWASP Juice Shop scenarios it reaches a 92.3% detection rate against SQLMap\'s 76.9%, using roughly 68.8% fewer requests. With Nguyen Le Quoc Anh and Nguyen Manh Thang.',
+      url: 'https://isj.vn/index.php/journal_STIS/article/view/1179',
+      linkLabel: 'Read on ISJ'
+    }
+  ] as readonly { venue: string; title: string; description: string; url: string; linkLabel: string }[],
   contact: {
     email: 'mailto:anhnlq.infosec@gmail.com',
     label: 'anhnlq.infosec@gmail.com',
