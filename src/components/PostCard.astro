@@ -1,0 +1,5 @@
+---
+import { sitePath } from '../lib/paths'; import { postPath } from '../lib/posts';
+const { entry } = Astro.props as { entry: { data: { type: 'writeup' | 'blog'; slug: string; coverImage?: string; title: string; date: Date; summary: string; tags: string[]; category?: string } } };
+---
+<article class="post-card"><a class="post-cover" href={sitePath(postPath(entry.data.type, entry.data.slug))}>{entry.data.coverImage ? <img src={sitePath(entry.data.coverImage)} alt={`Abstract cover for ${entry.data.title}`} loading="lazy" /> : <span aria-hidden="true">$ ./post-preview</span>}</a><div class="post-card-body"><time>{entry.data.date.toLocaleDateString('en', { year: 'numeric', month: 'short', day: 'numeric' })}</time><h2><a href={sitePath(postPath(entry.data.type, entry.data.slug))}>{entry.data.title}</a></h2><p>{entry.data.summary}</p><div class="tags">{entry.data.tags.map((tag) => <span>{tag}</span>)}</div>{entry.data.category && <small>{entry.data.category}</small>}<a class="post-read" href={sitePath(postPath(entry.data.type, entry.data.slug))}>Read →</a></div></article>

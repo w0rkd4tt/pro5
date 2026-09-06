@@ -1,0 +1,6 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { achievements, type AchievementKind } from '../data/hall-of-fame';
+const groups: { kind: AchievementKind; label: string }[] = [{kind:'paper',label:'Public Papers'},{kind:'cve',label:'CVE Records'},{kind:'certification',label:'Credentials'},{kind:'acknowledgement',label:'Acknowledgements'},{kind:'career',label:'Career Path'}];
+---
+<BaseLayout title="Hall of Fame" currentPath="/hall-of-fame"><section class="section"><p class="mono muted">CAREER PATH / FIELD NOTES</p><h1>The work left a trail.</h1><p class="lede">Not a list of titles. A record of the problems I chose to stay with.</p></section>{groups.filter(({kind}) => achievements.some((item) => item.kind === kind)).map(({kind,label}) => <section class="section career-path"><h2>{label}</h2>{achievements.filter((item) => item.kind === kind).map((item) => <article class="achievement"><span class="meta career-date">{item.date}<br/>{item.organization}</span><span><h3>{item.url ? <a href={item.url}>{item.title}</a> : item.title}</h3><p class="muted">{item.summary}</p></span></article>)}</section>)}</BaseLayout>

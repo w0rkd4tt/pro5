@@ -1,0 +1,6 @@
+---
+import { giscusScriptAttributes, type GiscusConfig } from './giscus-config';
+const { config } = Astro.props as { config: GiscusConfig | null };
+const attributes = giscusScriptAttributes(config);
+---
+<section class="section"><h2>Discussion</h2>{attributes ? <script is:inline {...attributes}></script> : <p class="muted">Discussion is not configured yet.</p>}</section>

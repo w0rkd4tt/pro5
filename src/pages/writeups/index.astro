@@ -1,0 +1,4 @@
+---
+import { getCollection } from 'astro:content'; import BaseLayout from '../../layouts/BaseLayout.astro'; import PostCard from '../../components/PostCard.astro'; import { getPostsByType } from '../../lib/posts'; const posts = getPostsByType(await getCollection('posts'), 'writeup');
+---
+<BaseLayout title="Write-Ups" currentPath="/writeups"><section class="section listing"><header class="section-title"><p>$ tail -f writeups.log</p><h1>Write-Ups</h1><i></i></header><div class="post-grid">{posts.map((entry) => <PostCard entry={entry} />)}</div></section></BaseLayout>

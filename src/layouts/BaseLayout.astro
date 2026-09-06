@@ -1,0 +1,57 @@
+---
+import '../styles/global.css';
+import { portfolioNavigation, site } from '../config/site';
+import { sitePath } from '../lib/paths';
+import ConstellationBackground from '../components/ConstellationBackground.astro';
+const { currentPath = '/' } = Astro.props;
+---
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="description" content="Offensive security notes, tooling, and write-ups by w0rkd4tt" />
+    <meta name="theme-color" content="#050807" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <link rel="icon" type="image/png" sizes="16x16" href={sitePath('/favicon-16x16.png')} />
+    <link rel="icon" type="image/png" sizes="32x32" href={sitePath('/favicon-32x32.png')} />
+    <link rel="icon" type="image/png" sizes="192x192" href={sitePath('/favicon-192x192.png')} />
+    <link rel="apple-touch-icon" sizes="180x180" href={sitePath('/apple-touch-icon.png')} />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inconsolata:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <title>Portfolio w0rkd4tt</title>
+  </head>
+  <body>
+    <ConstellationBackground /><div class="scanlines" aria-hidden="true"></div>
+    <a class="skip-link" href="#content">Skip to content</a>
+    <header class="site-header">
+      <div class="header-inner">
+        <a class="brand" href={sitePath('/#home')} aria-label={`${site.name} home`}><span>[</span>{site.nickname}<span>]</span></a>
+        <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-menu" aria-label="Open navigation"><i></i><i></i><i></i></button>
+        <nav class="site-nav" id="site-menu" aria-label="Primary navigation">
+          {portfolioNavigation.map((item) => { const active = item.href === '#home' ? currentPath === '/' : !item.href.startsWith('#') && currentPath.startsWith(item.href); return <a href={sitePath(item.href.startsWith('#') ? `/${item.href}` : item.href)} aria-current={active ? 'page' : undefined}>{item.label}</a>; })}
+        </nav>
+      </div>
+    </header>
+    <main id="content"><slot /></main>
+    <footer class="site-footer"><p>Read the code, not the marketing. — w0rkd4tt</p></footer>
+    <button class="back-to-top" type="button" aria-label="Back to top">↑</button>
+    <script>
+      const toggle = document.querySelector<HTMLButtonElement>('.menu-toggle');
+      const nav = document.querySelector<HTMLElement>('.site-nav');
+      const topButton = document.querySelector<HTMLButtonElement>('.back-to-top');
+      toggle?.addEventListener('click', () => {
+        const open = toggle.getAttribute('aria-expanded') === 'true';
+        toggle.setAttribute('aria-expanded', String(!open));
+        nav?.classList.toggle('is-open', !open);
+      });
+      nav?.querySelectorAll('a').forEach((link) => link.addEventListener('click', () => {
+        toggle?.setAttribute('aria-expanded', 'false'); nav?.classList.remove('is-open');
+      }));
+      addEventListener('scroll', () => topButton?.classList.toggle('is-visible', scrollY > 560), { passive: true });
+      topButton?.addEventListener('click', () => scrollTo({ top: 0, behavior: 'smooth' }));
+    </script>
+  </body>
+</html>

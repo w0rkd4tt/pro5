@@ -1,0 +1,5 @@
+---
+const { entry } = Astro.props;
+import { sitePath } from '../lib/paths';
+---
+<a class="card" href={sitePath(`/research/${entry.id}`)}><span class="meta">{entry.data.type}</span><span><h3>{entry.data.title}</h3><p class="muted">{entry.data.description}</p>{entry.data.tags.map((tag: string)=><i class="tag">{tag}</i>)}</span><time class="meta">{entry.data.publishedAt.toLocaleDateString('en',{month:'short',year:'numeric'})}</time></a>

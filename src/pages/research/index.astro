@@ -1,0 +1,9 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import ResearchCard from '../../components/ResearchCard.astro';
+import ResearchFilters from '../../components/ResearchFilters.astro';
+const entries = (await getCollection('research', ({data}) => !data.draft)).sort((a,b) => b.data.publishedAt.valueOf() - a.data.publishedAt.valueOf());
+const types = [...new Set(entries.map((entry) => entry.data.type))]; const tags = [...new Set(entries.flatMap((entry) => entry.data.tags))].sort();
+---
+<BaseLayout title="Research" currentPath="/research"><section class="section"><p class="mono muted">RESEARCH / INDEX</p><h1>Field notes from the work.</h1><p class="lede">Papers, vulnerability research, disclosures, and the questions that persist after a report closes.</p><ResearchFilters {types} {tags}/><div class="card-list">{entries.map((entry) => <div data-research-card data-type={entry.data.type} data-tags={entry.data.tags.join(',')}><ResearchCard {entry}/></div>)}</div></section></BaseLayout>

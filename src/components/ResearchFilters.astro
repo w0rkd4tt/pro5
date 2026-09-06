@@ -1,0 +1,9 @@
+---
+const { types, tags } = Astro.props;
+---
+<div class="archive-controls"><label class="mono">TYPE <select id="type-filter"><option>All</option>{types.map((type: string)=><option>{type}</option>)}</select></label><label class="mono">TAG <select id="tag-filter"><option>All</option>{tags.map((tag: string)=><option>{tag}</option>)}</select></label></div>
+<script>
+  const type = document.querySelector<HTMLSelectElement>('#type-filter'); const tag = document.querySelector<HTMLSelectElement>('#tag-filter');
+  const apply = () => document.querySelectorAll<HTMLElement>('[data-research-card]').forEach((card) => { const types = card.dataset.type ?? ''; const tags = (card.dataset.tags ?? '').split(','); card.hidden = !((type?.value === 'All' || types === type?.value) && (tag?.value === 'All' || tags.includes(tag?.value ?? ''))); });
+  type?.addEventListener('change', apply); tag?.addEventListener('change', apply);
+</script>

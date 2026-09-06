@@ -1,0 +1,4 @@
+---
+import { getCollection, render } from 'astro:content'; import BaseLayout from '../../layouts/BaseLayout.astro'; import PostDetail from '../../components/PostDetail.astro'; import { getPostsByType } from '../../lib/posts'; export async function getStaticPaths(){return getPostsByType(await getCollection('posts'),'writeup').map((entry)=>({params:{slug:entry.data.slug},props:{entry}}));} const { entry }=Astro.props; const { Content, headings }=await render(entry);
+---
+<BaseLayout title={entry.data.title} description={entry.data.summary} currentPath="/writeups"><PostDetail entry={entry} Content={Content} headings={headings} /></BaseLayout>
