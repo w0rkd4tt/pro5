@@ -79,6 +79,18 @@ npm run build      # output tĩnh trong dist/
 
 > Mọi link nội bộ phải gọi `sitePath()` trong `src/lib/paths.ts` để base path `/pro5` không bị vỡ.
 
+## Publish một lệnh
+
+```bash
+./publish.sh                 # check -> test -> build -> commit -> push -> theo dõi deploy
+./publish.sh "commit msg"    # tự đặt commit message
+./publish.sh -n              # chỉ chạy check/test/build, không commit/push
+./publish.sh -f              # không có thay đổi vẫn chạy lại workflow deploy
+```
+
+Script dừng ngay khi có bước fail, liệt kê file sắp publish, cảnh báo bài còn `draft: true`, và in link live
+khi GitHub Actions xong. Tương đương `npm run deploy`.
+
 ## Deploy
 
 Push lên `main` là xong: `.github/workflows/deploy.yml` chạy `check` → `test` → `build` rồi publish lên
