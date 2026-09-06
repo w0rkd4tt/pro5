@@ -1,0 +1,116 @@
+<canvas class="binary-canvas" aria-hidden="true"></canvas>
+
+<script>
+  const canvas = document.querySelector<HTMLCanvasElement>('.binary-canvas');
+
+  if (canvas) {
+    const context = canvas.getContext('2d');
+    const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)');
+    const stepInterval = 90;
+    let frameId = 0;
+    let lastStep = 0;
+    let visible = !document.hidden;
+    let fontSize = 14;
+    let rowHeight = 18;
+    let columns: Array<{ x: number; head: number; speed: number; trail: number; glyphs: string[] }> = [];
+
+    const glyph = () => (Math.random() < 0.5 ? '0' : '1');
+    const columnWidth = () => (innerWidth <= 480 ? 14 : 18);
+
+    const createColumns = () => {
+      fontSize = innerWidth <= 480 ? 11 : 13;
+      rowHeight = fontSize + 5;
+      const width = columnWidth();
+      const rows = Math.ceil(innerHeight / rowHeight) + 2;
+      columns = Array.from({ length: Math.ceil(innerWidth / width) }, (_unused, index) => {
+        const trail = 8 + Math.floor(Math.random() * 12);
+        return {
+          x: index * width + width / 2,
+          // Seed heads across the viewport so the very first frame is already full.
+          head: Math.floor(Math.random() * (rows + trail)) - Math.floor(rows * 0.15),
+          speed: Math.random() < 0.3 ? 2 : 1,
+          trail,
+          glyphs: Array.from({ length: rows + trail }, glyph)
+        };
+      });
+    };
+
+    const resize = () => {
+      const dpr = Math.min(devicePixelRatio || 1, 2);
+      canvas.width = Math.round(innerWidth * dpr);
+      canvas.height = Math.round(innerHeight * dpr);
+      canvas.style.width = `${innerWidth}px`;
+      canvas.style.height = `${innerHeight}px`;
+      context?.setTransform(dpr, 0, 0, dpr, 0, 0);
+      createColumns();
+      draw();
+    };
+
+    const draw = () => {
+      if (!context) return;
+      context.clearRect(0, 0, innerWidth, innerHeight);
+      context.font = `${fontSize}px "JetBrains Mono", "Inconsolata", monospace`;
+      context.textAlign = 'center';
+      context.textBaseline = 'middle';
+      for (const column of columns) {
+        for (let offset = 0; offset < column.trail; offset += 1) {
+          const row = column.head - offset;
+          if (row < 0) continue;
+          const y = row * rowHeight + rowHeight / 2;
+          if (y > innerHeight + rowHeight) continue;
+          const fade = 1 - offset / column.trail;
+          const character = column.glyphs[(row + offset) % column.glyphs.length];
+          context.fillStyle = offset === 0
+            ? `rgba(186, 255, 219, ${0.85 * fade})`
+            : `rgba(0, 255, 127, ${0.5 * fade * fade})`;
+          context.fillText(character, column.x, y);
+        }
+      }
+    };
+
+    const step = () => {
+      const rows = Math.ceil(innerHeight / rowHeight) + 2;
+      for (const column of columns) {
+        column.head += column.speed;
+        if (column.head - column.trail > rows) {
+          column.head = -Math.floor(Math.random() * rows * 0.6);
+          column.glyphs = column.glyphs.map((character) => (Math.random() < 0.35 ? glyph() : character));
+        }
+      }
+    };
+
+    const animate = (timestamp: number) => {
+      if (!visible || reducedMotion.matches) return;
+      if (timestamp - lastStep >= stepInterval) {
+        lastStep = timestamp;
+        step();
+        draw();
+      }
+      frameId = requestAnimationFrame(animate);
+    };
+    const visibilityChange = () => {
+      visible = !document.hidden;
+      cancelAnimationFrame(frameId);
+      if (visible && !reducedMotion.matches) frameId = requestAnimationFrame(animate);
+    };
+    const motionChange = () => {
+      cancelAnimationFrame(frameId);
+      draw();
+      if (!reducedMotion.matches && visible) frameId = requestAnimationFrame(animate);
+    };
+    const cleanup = () => {
+      cancelAnimationFrame(frameId);
+      removeEventListener('resize', resize);
+      document.removeEventListener('visibilitychange', visibilityChange);
+      reducedMotion.removeEventListener('change', motionChange);
+      document.removeEventListener('astro:before-swap', cleanup);
+    };
+
+    resize();
+    if (!reducedMotion.matches) frameId = requestAnimationFrame(animate);
+    addEventListener('resize', resize, { passive: true });
+    document.addEventListener('visibilitychange', visibilityChange);
+    reducedMotion.addEventListener('change', motionChange);
+    document.addEventListener('astro:before-swap', cleanup, { once: true });
+  }
+</script>

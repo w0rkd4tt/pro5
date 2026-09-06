@@ -3,6 +3,7 @@ import '../styles/global.css';
 import { portfolioNavigation, site } from '../config/site';
 import { sitePath } from '../lib/paths';
 import ConstellationBackground from '../components/ConstellationBackground.astro';
+import BinaryStreamBackground from '../components/BinaryStreamBackground.astro';
 const { currentPath = '/' } = Astro.props;
 ---
 <!doctype html>
@@ -24,7 +25,7 @@ const { currentPath = '/' } = Astro.props;
     <title>Portfolio w0rkd4tt</title>
   </head>
   <body>
-    <ConstellationBackground /><div class="scanlines" aria-hidden="true"></div>
+    <ConstellationBackground /><BinaryStreamBackground /><div class="scanlines" aria-hidden="true"></div>
     <a class="skip-link" href="#content">Skip to content</a>
     <header class="site-header">
       <div class="header-inner">
