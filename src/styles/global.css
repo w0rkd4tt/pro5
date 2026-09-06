@@ -34,3 +34,4 @@
 .severity-high{color:#ff9f43;border-color:#ff9f43}
 .severity-critical{color:var(--red);border-color:var(--red)}
 .binary-canvas{position:fixed;inset:0;pointer-events:none;z-index:0;width:100%;height:100%;opacity:.30}@media (prefers-reduced-motion:reduce){.binary-canvas{opacity:.18}}
+.cve-table-wrap.is-collapsed tbody tr:nth-child(n+3),.cert-list.is-collapsed li:nth-child(n+3){display:none}.collapse-toggle{margin-top:18px;font-size:.82rem}

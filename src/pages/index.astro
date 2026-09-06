@@ -22,19 +22,19 @@ import { cveRecords, cveNumber } from '../data/cves';
 
   <section class="section reveal" id="skills" aria-labelledby="skills-title">
     <header class="section-title"><p>$ ls ~/skills</p><h2 id="skills-title">Skills</h2><i></i></header>
-    <div class="skills-grid">{portfolio.skillGroups.map((group) => <article class:list={['skill-card', { others: group.title === 'Others' }]}><h3>{group.title}</h3><ul>{group.items.map((item) => <li>{item}</li>)}</ul></article>)}</div>
+    <div class="skills-grid">{portfolio.skillGroups.map((group) => <article class:list={['skill-card', { others: group.title === 'Others' && portfolio.skillGroups.length % 2 === 1 }]}><h3>{group.title}</h3><ul>{group.items.map((item) => <li>{item}</li>)}</ul></article>)}</div>
   </section>
 
   <section class="section reveal" id="research" aria-labelledby="research-title">
     <header class="section-title"><p>$ cat cves.log</p><h2 id="research-title">Research</h2><i></i></header>
     {cveRecords.length === 0 && <p class="empty-state">No published CVEs indexed yet. Add records in <code>src/data/cves.ts</code>.</p>}
     {cveRecords.length > 0 && <Fragment><div class="cve-controls"><label class="mono">SORT <select id="cve-sort"><option value="oldest-first">Oldest → Newest</option><option value="severity-asc">Moderate → Critical</option><option value="severity-desc">Critical → Moderate</option></select></label></div>
-    <div class="cve-table-wrap"><table class="cve-table"><thead><tr><th>CVE Number</th><th>Program</th><th>Severity</th></tr></thead><tbody id="cve-body">{[...cveRecords].sort((a, b) => cveNumber(a.cve) - cveNumber(b.cve)).map((record) => <tr data-cve={record.cve} data-severity={record.severity}><td>{record.writeup ? <a href={sitePath(postPath('writeup', record.writeup))}>{record.cve}</a> : <a href={record.reference} target="_blank" rel="noreferrer">{record.cve}</a>}</td><td>{record.program}</td><td><span class:list={['severity', `severity-${record.severity.toLowerCase()}`]}>{record.severity} {record.score}</span></td></tr>)}</tbody></table></div></Fragment>}
+    <div class="cve-table-wrap" id="cve-list"><table class="cve-table"><thead><tr><th>CVE Number</th><th>Program</th><th>Severity</th></tr></thead><tbody id="cve-body">{[...cveRecords].sort((a, b) => cveNumber(a.cve) - cveNumber(b.cve)).map((record) => <tr data-cve={record.cve} data-severity={record.severity}><td>{record.writeup ? <a href={sitePath(postPath('writeup', record.writeup))}>{record.cve}</a> : <a href={record.reference} target="_blank" rel="noreferrer">{record.cve}</a>}</td><td>{record.program}</td><td><span class:list={['severity', `severity-${record.severity.toLowerCase()}`]}>{record.severity} {record.score}</span></td></tr>)}</tbody></table></div><button class="button button-outline collapse-toggle" type="button" data-collapse-toggle="#cve-list" data-collapse-items="tbody tr" data-more-label={`Show all ${cveRecords.length} CVEs`} data-less-label="Show fewer" aria-controls="cve-list" hidden>Show all</button></Fragment>}
   </section>
 
   <section class="section reveal" id="certifications" aria-labelledby="certifications-title">
     <header class="section-title"><p>$ cat credentials.log</p><h2 id="certifications-title">Credentials</h2><i></i></header>
-    <div class="cert-groups"><article class="cert-category"><h3>Certifications</h3>{portfolio.certifications.length === 0 ? <p class="empty-state">No certificates indexed yet.</p> : <ul class="achievement-list">{portfolio.certifications.map((certification) => <li>{certification.title}{certification.issuer && <span class="muted"> — {certification.issuer}</span>}</li>)}</ul>}</article></div>
+    <div class="cert-groups"><article class="cert-category"><h3>Certifications</h3>{portfolio.certifications.length === 0 ? <p class="empty-state">No certificates indexed yet.</p> : <Fragment><ul class="achievement-list cert-list" id="cert-list">{portfolio.certifications.map((certification) => <li>{certification.title}{certification.issuer && <span class="muted"> — {certification.issuer}</span>}</li>)}</ul><button class="button button-outline collapse-toggle" type="button" data-collapse-toggle="#cert-list" data-collapse-items="li" data-more-label={`Show all ${portfolio.certifications.length} certifications`} data-less-label="Show fewer" aria-controls="cert-list" hidden>Show all</button></Fragment>}</article></div>
   </section>
 
   <section class="section reveal" id="projects" aria-labelledby="projects-title">
@@ -51,6 +51,25 @@ import { cveRecords, cveNumber } from '../data/cves';
     <header class="section-title"><p>$ ping collaborator</p><h2 id="contact-title">Contact</h2><i></i></header>
     <div class="contact-card"><p>Found a bug in something I built, or want to trade notes on an engagement? Ping me.</p><dl><div><dt>EMAIL</dt><dd><a href={portfolio.contact.email}>{portfolio.contact.label}</a></dd></div><div><dt>GITHUB</dt><dd><a href={portfolio.contact.github} target="_blank" rel="noreferrer">{portfolio.contact.githubLabel}</a></dd></div>{portfolio.contact.linkedin && <div><dt>LINKEDIN</dt><dd><a href={portfolio.contact.linkedin} target="_blank" rel="noreferrer">{portfolio.contact.linkedinLabel}</a></dd></div>}</dl></div>
   </section>
+
+  <script>
+    const visibleCount = 2;
+    document.querySelectorAll<HTMLButtonElement>('[data-collapse-toggle]').forEach((button) => {
+      const target = document.querySelector<HTMLElement>(button.dataset.collapseToggle ?? '');
+      const itemSelector = button.dataset.collapseItems ?? ':scope > *';
+      if (!target || target.querySelectorAll(itemSelector).length <= visibleCount) return;
+      const moreLabel = button.dataset.moreLabel ?? 'Show all';
+      const lessLabel = button.dataset.lessLabel ?? 'Show fewer';
+      const sync = (collapsed: boolean) => {
+        target.classList.toggle('is-collapsed', collapsed);
+        button.textContent = collapsed ? moreLabel : lessLabel;
+        button.setAttribute('aria-expanded', String(!collapsed));
+      };
+      sync(true);
+      button.hidden = false;
+      button.addEventListener('click', () => sync(!target.classList.contains('is-collapsed')));
+    });
+  </script>
 
   <script>
     const reduceMotion = matchMedia('(prefers-reduced-motion: reduce)').matches;

@@ -2,9 +2,16 @@ import { expect, it } from 'vitest';
 import { portfolio } from '../src/config/site';
 
 it('lists my own repositories and contact links', () => {
-  expect(portfolio.projects.length).toBeGreaterThan(0);
+  expect(portfolio.projects).toHaveLength(6);
   expect(portfolio.projects.every((project) => project.url.startsWith('https://github.com/w0rkd4tt/'))).toBe(true);
   expect(portfolio.contact.github).toBe('https://github.com/w0rkd4tt');
+});
+
+it('groups skills including the AI and prompting track', () => {
+  const titles = portfolio.skillGroups.map((group) => group.title);
+  expect(titles).toContain('AI & Prompting');
+  const ai = portfolio.skillGroups.find((group) => group.title === 'AI & Prompting');
+  expect(ai?.items).toContain('Prompt Engineering');
 });
 
 it('lists the published paper with a resolvable link', () => {
