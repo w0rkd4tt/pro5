@@ -20,7 +20,7 @@ export const cveRecords: CveRecord[] = [
   { cve: 'CVE-2025-52040', program: 'Frappe ERPNext 15.57.5', severity: 'High', score: 8.2, reference: 'https://nvd.nist.gov/vuln/detail/CVE-2025-52040' },
   { cve: 'CVE-2025-52041', program: 'Frappe ERPNext 15.57.5', severity: 'High', score: 8.2, reference: 'https://nvd.nist.gov/vuln/detail/CVE-2025-52041' },
   { cve: 'CVE-2025-52042', program: 'Frappe ERPNext 15.57.5', severity: 'High', score: 8.2, reference: 'https://nvd.nist.gov/vuln/detail/CVE-2025-52042' },
-  { cve: 'CVE-2025-52284', program: 'Totolink X6000R firmware', severity: 'Moderate', score: 6.5, reference: 'https://vulners.com/cve/CVE-2025-52284' }
+  { cve: 'CVE-2025-52284', program: 'Totolink X6000R firmware', severity: 'Moderate', score: 8.2, reference: 'https://vulners.com/cve/CVE-2025-52284' }
 ];
 
 export const severityRank: Record<Severity, number> = { Low: 1, Moderate: 2, High: 3, Critical: 4 };
