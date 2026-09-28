@@ -8,7 +8,8 @@ export const site = {
     { label: 'Email', href: 'mailto:datnguyenlequoc2001@gmail.com' },
     { label: 'GitHub', href: 'https://github.com/w0rkd4tt' }
   ],
-  giscus: null
+  giscus: null,
+  writeupPassword: 'writeup123'
 } as const;
 
 export const portfolioNavigation = [

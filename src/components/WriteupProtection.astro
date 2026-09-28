@@ -1,0 +1,177 @@
+---
+interface Props {
+  password: string;
+}
+
+const { password } = Astro.props;
+---
+
+<div id="writeup-protection" data-password={password} class="protection-wrapper">
+  <div class="password-overlay">
+    <div class="password-prompt">
+      <h2>Protected Content</h2>
+      <p>This writeup is password protected.</p>
+      <form id="password-form">
+        <input
+          type="password"
+          id="password-input"
+          placeholder="Enter password"
+          required
+          autocomplete="off"
+        />
+        <button type="submit" class="button button-solid">Unlock</button>
+      </form>
+      <p class="hint">Hint: Check the navbar or contact for the password</p>
+    </div>
+  </div>
+  <div id="content-area" class="content-hidden">
+    <slot />
+  </div>
+</div>
+
+<style>
+  .protection-wrapper {
+    position: relative;
+    min-height: 100vh;
+  }
+
+  .password-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(5, 8, 7, 0.98);
+    backdrop-filter: blur(8px);
+    z-index: 100;
+    place-items: center;
+  }
+
+  .password-overlay.is-visible {
+    display: grid;
+  }
+
+  .password-prompt {
+    max-width: 380px;
+    padding: 40px;
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    background: var(--panel);
+    box-shadow: 0 28px 70px #000b;
+    text-align: center;
+  }
+
+  .password-prompt h2 {
+    margin: 0 0 16px;
+    color: var(--accent);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 1.4rem;
+  }
+
+  .password-prompt p {
+    margin: 0 0 24px;
+    color: var(--muted);
+    font-size: 0.95rem;
+  }
+
+  #password-form {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-bottom: 16px;
+  }
+
+  #password-input {
+    padding: 10px 14px;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    background: #0a0f0e;
+    color: var(--text);
+    font-family: inherit;
+    font-size: 0.95rem;
+    transition: border-color 0.25s;
+  }
+
+  #password-input:focus {
+    outline: none;
+    border-color: var(--accent-dim);
+    box-shadow: 0 0 12px rgba(0, 255, 127, 0.15);
+  }
+
+  #password-input::placeholder {
+    color: var(--faint);
+  }
+
+  .password-prompt .button {
+    width: 100%;
+    margin: 0;
+  }
+
+  .hint {
+    margin: 0;
+    font-size: 0.85rem;
+    color: var(--faint);
+  }
+
+  .content-hidden {
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  .content-hidden.is-visible {
+    opacity: 1;
+    pointer-events: auto;
+  }
+</style>
+
+<script is:inline define:vars={{ password }}>
+  const form = document.getElementById('password-form');
+  const input = document.getElementById('password-input');
+  const overlay = document.querySelector('.password-overlay');
+  const contentArea = document.getElementById('content-area');
+
+  const STORAGE_KEY = 'writeup_unlocked';
+
+  function checkUnlocked() {
+    return sessionStorage.getItem(STORAGE_KEY) === 'true';
+  }
+
+  function unlock() {
+    sessionStorage.setItem(STORAGE_KEY, 'true');
+    overlay?.classList.remove('is-visible');
+    contentArea?.classList.add('is-visible');
+  }
+
+  if (checkUnlocked()) {
+    overlay?.classList.remove('is-visible');
+    contentArea?.classList.add('is-visible');
+  } else {
+    overlay?.classList.add('is-visible');
+    contentArea?.classList.remove('is-visible');
+  }
+
+  form?.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const entered = input?.value.trim() || '';
+
+    if (entered === password) {
+      unlock();
+      input.value = '';
+    } else {
+      input.classList.add('error');
+      input.value = '';
+      setTimeout(() => input.classList.remove('error'), 600);
+    }
+  });
+</script>
+
+<style>
+  #password-input.error {
+    animation: shake 0.3s;
+    border-color: var(--red);
+  }
+
+  @keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    25% { transform: translateX(-6px); }
+    75% { transform: translateX(6px); }
+  }
+</style>
