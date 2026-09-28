@@ -1,7 +1,7 @@
 ---
 title: 'Template — blog post'
 slug: example-blog
-type: blog
+type: writeup
 date: 2026-09-06
 summary: 'Template for a blog post. Keep draft: true until it is ready to publish.'
 tags: [template]

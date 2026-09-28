@@ -1,7 +1,7 @@
 ---
 title: 'SQL injection vulnerability'
 slug: sqlinjection
-type: blog
+type: writeup
 date: 2021-09-27
 summary: 'PortSwigger Web Security Academy Labs...'
 tags: [security, writeup]

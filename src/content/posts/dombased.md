@@ -1,7 +1,7 @@
 ---
 title: 'DOM-based vulnerabilities'
 slug: dombased
-type: blog
+type: writeup
 date: 2021-09-27
 summary: 'DOM-based vulnerabilities...'
 tags: [security, writeup]

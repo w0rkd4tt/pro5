@@ -1,7 +1,7 @@
 ---
 title: 'Learn PWN - Practice:  First step'
 slug: protostar
-type: blog
+type: writeup
 date: 2021-10-21
 summary: 'How did I come into contact with pwn ?...'
 tags: [security, writeup]

@@ -1,7 +1,7 @@
 ---
 title: '[LTAT] Overflow-based Exploitation'
 slug: bof
-type: blog
+type: writeup
 date: 2021-11-21
 summary: 'NT521 : Overflow-based Exploitation...'
 tags: [security, writeup]

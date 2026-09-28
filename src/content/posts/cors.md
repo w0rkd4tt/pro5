@@ -1,7 +1,7 @@
 ---
 title: 'Cross-origin resource sharing - CORS'
 slug: cors
-type: blog
+type: writeup
 date: 2021-09-27
 summary: 'Cross-origin resource sharing (CORS) là gì ?...'
 tags: [security, writeup]

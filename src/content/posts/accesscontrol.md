@@ -1,7 +1,7 @@
 ---
 title: '[PortSwigger] Access Control'
 slug: accesscontrol
-type: blog
+type: writeup
 date: 2021-11-06
 summary: 'Access Control Vulnerabilities...'
 tags: [security, writeup]

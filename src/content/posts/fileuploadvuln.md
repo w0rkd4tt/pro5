@@ -1,7 +1,7 @@
 ---
 title: '[PortSwigger] - File upload vulnerabilities'
 slug: fileuploadvuln
-type: blog
+type: writeup
 date: 2022-01-05
 summary: 'File upload vulnerabilities...'
 tags: [security, writeup]

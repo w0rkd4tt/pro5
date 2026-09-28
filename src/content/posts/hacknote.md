@@ -1,7 +1,7 @@
 ---
 title: '[Pwnable.tw] – Hacknote'
 slug: hacknote
-type: blog
+type: writeup
 date: 2021-12-23
 summary: '[Pwnable.tw] – [hacknote](https://pwnable.tw/challenge/#5)...'
 tags: [security, writeup]

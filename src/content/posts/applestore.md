@@ -1,7 +1,7 @@
 ---
 title: '[Pwnable.tw] – Applestore'
 slug: applestore
-type: blog
+type: writeup
 date: 2021-12-27
 summary: '[Pwnable.tw] – [Applestore](https://pwnable.tw/challenge/#7)...'
 tags: [security, writeup]

@@ -1,7 +1,7 @@
 ---
 title: 'Phaphajian'
 slug: phaphajian
-type: blog
+type: writeup
 date: 2021-11-06
 summary: 'Welcome đến với deadline của PhaPhaJian !...'
 tags: [security, writeup]

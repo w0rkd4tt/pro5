@@ -1,7 +1,7 @@
 ---
 title: 'Clickjacking'
 slug: clickjacking
-type: blog
+type: writeup
 date: 2021-09-27
 summary: 'Clickjacking...'
 tags: [security, writeup]

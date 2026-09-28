@@ -1,7 +1,7 @@
 ---
 title: 'Cross-site Request Forgery - CSRF'
 slug: csrf
-type: blog
+type: writeup
 date: 2021-09-27
 summary: 'Cross-site Request Forgery...'
 tags: [security, writeup]

@@ -1,7 +1,7 @@
 ---
 title: '[Pwnable.tw] – Silver Bullet'
 slug: silverbullet
-type: blog
+type: writeup
 date: 2021-12-23
 summary: '[Pwnable.tw] – [Silver Bullet](https://pwnable.tw/challenge/#6)...'
 tags: [security, writeup]

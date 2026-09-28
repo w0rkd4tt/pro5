@@ -1,7 +1,7 @@
 ---
 title: '[CTF] - DUCTF'
 slug: ductf
-type: blog
+type: writeup
 date: 2021-09-27
 summary: 'DUCTF WriteUp...'
 tags: [security, writeup]

@@ -1,7 +1,7 @@
 ---
 title: '[Pwnable.tw] – Dubblesort'
 slug: dubblesort
-type: blog
+type: writeup
 date: 2021-12-08
 summary: '[Pwnable.tw] – [Dubblesort](https://pwnable.tw/challenge/#4)...'
 tags: [security, writeup]

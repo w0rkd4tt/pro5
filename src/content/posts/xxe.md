@@ -1,7 +1,7 @@
 ---
 title: 'XML external entity injection - XXE'
 slug: xxe
-type: blog
+type: writeup
 date: 2021-09-27
 summary: 'XML external entity injection (XXE)...'
 tags: [security, writeup]

@@ -1,7 +1,7 @@
 ---
 title: '[Pwnable.tw] – Realloc'
 slug: realloc
-type: blog
+type: writeup
 date: 2021-12-30
 summary: '[Pwnable.tw] – [Realloc](https://pwnable.tw/challenge/#40)...'
 tags: [security, writeup]

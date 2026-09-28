@@ -1,7 +1,7 @@
 ---
 title: '[PortSwigger] - Websocket'
 slug: websocket
-type: blog
+type: writeup
 date: 2022-01-01
 summary: '[WebSockets](https://portswigger.net/web-security/websockets)...'
 tags: [security, writeup]

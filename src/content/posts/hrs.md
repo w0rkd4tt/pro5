@@ -1,7 +1,7 @@
 ---
 title: 'HTTP Request Smuggling - HRS'
 slug: hrs
-type: blog
+type: writeup
 date: 2021-09-27
 summary: 'HTTP Request Smuggling...'
 tags: [security, writeup]

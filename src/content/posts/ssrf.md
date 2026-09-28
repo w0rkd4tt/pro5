@@ -1,7 +1,7 @@
 ---
 title: 'Server-side request forgery - SSRF'
 slug: ssrf
-type: blog
+type: writeup
 date: 2021-09-27
 summary: 'Server-side request forgery (SSRF)...'
 tags: [security, writeup]
