@@ -9,7 +9,7 @@ export const site = {
     { label: 'GitHub', href: 'https://github.com/w0rkd4tt' }
   ],
   giscus: null,
-  writeupPassword: 'writeup123'
+  writeupPassword: import.meta.env.PUBLIC_WRITEUP_PASSWORD || 'writeup123'
 } as const;
 
 export const portfolioNavigation = [
