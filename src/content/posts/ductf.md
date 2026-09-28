@@ -7,7 +7,6 @@ summary: 'DUCTF WriteUp...'
 tags: [security, writeup]
 ---
 
-# DUCTF WriteUp
 ## Pwn (4/9)
 ### deadcode
 First things, we have to check file and checksec cmd to make something clearly.

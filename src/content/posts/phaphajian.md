@@ -7,7 +7,6 @@ summary: 'Welcome đến với deadline của PhaPhaJian !...'
 tags: [security, writeup]
 ---
 
-## Welcome đến với deadline của PhaPhaJian !
 Đầy là 1 trong những deadline của mình trên trường do anh PhaPhaJian cho mình trên lớp, cũng là 1 dịp để quay lại những kỹ thuật mà mình đã học qua lúc trước
 ### rop2
 ##### [Rop2](https://uithcm-my.sharepoint.com/:u:/g/personal/inseclab_hcmuit_edu_vn/EYd3UU7ocA1DipbNdbG32lkBa8ySQ2GQjnIOB6grKLWaSg?e=uNvgYj) - x86 - ret2text/ret2syscall: nc 45.122.249.68 10006

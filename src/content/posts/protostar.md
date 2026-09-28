@@ -7,7 +7,6 @@ summary: 'How did I come into contact with pwn ?...'
 tags: [security, writeup]
 ---
 
-# How did I come into contact with pwn ?
 In random day in random year ago, i feel like it’s fun to pwn, so …. i tried it like this.
 # PROTOSTAR EXPLOIT EXERCISE
 ## Stack 0

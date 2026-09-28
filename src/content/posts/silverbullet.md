@@ -7,7 +7,6 @@ summary: '[Pwnable.tw] – [Silver Bullet](https://pwnable.tw/challenge/#6)...'
 tags: [security, writeup]
 ---
 
-## [Pwnable.tw] – [Silver Bullet](https://pwnable.tw/challenge/#6)
 #### main()
 #### create_bullet()
 Tạo một viên đạn BULLET *bullet có tên là bullet.desc dài tối đa 0x30 kí tự do người dùng nhập vào, set power của bullet là bullet.power = len(bullet.desc).

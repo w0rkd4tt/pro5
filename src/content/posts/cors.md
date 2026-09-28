@@ -7,7 +7,6 @@ summary: 'Cross-origin resource sharing (CORS) là gì ?...'
 tags: [security, writeup]
 ---
 
-# Cross-origin resource sharing (CORS) là gì ?
 ## What is CORS ?
 Tên đầy đủ là Cross-Origin Resource Sharing. Hiểu sâu hơn đó chính là chia sẻ tài nguyên có nhiều nguồn gốc khác nhau. Chính sách nguồn
 gốc giống nhau của trình duyệt là một cơ chế bảo mật quan trọng. Khách hàng từ các nguồn khác nhau không thể truy cập tài nguyên của nhau

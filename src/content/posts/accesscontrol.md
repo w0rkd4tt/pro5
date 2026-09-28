@@ -7,7 +7,6 @@ summary: 'Access Control Vulnerabilities...'
 tags: [security, writeup]
 ---
 
-# Access Control Vulnerabilities
 Chào mọi người ~ Mình đã dừng việc traning trên portswigger 1 thời gian khá dài, maybe do mình chơi đồ (án) nhiều quá :3 Nhưng dù sao mình không nên bỏ bê chứng chỉ web này được :D.
 Hôm nay chúng ta sẽ mô tả về lỗ hổng kiểm soát truy cập(Access control) và leo thang đặc quyền (Privilege escalation) nhé!
 Để có thể khai thác được bất kỳ lỗ hổng nào thì chúng ta đều phải biết nó là lỗ hổng gì trước nên chúng ta sẽ tìm hiểu qua khái niệm của 2 lỗ hổng này trước

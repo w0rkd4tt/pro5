@@ -7,7 +7,6 @@ summary: 'NT521 : Overflow-based Exploitation...'
 tags: [security, writeup]
 ---
 
-# NT521 : Overflow-based Exploitation
 Helu mọi người, nhân tiện mình bị 1 đống bài pwn trên lớp dí nên mình viết luôn cái blog này cho vui :3 Nếu có gì sai sót thì thầy với các bạn đừng có dí em
 #### [ELF x86 - Format string bug basic 1](https://www.root-me.org/en/Challenges/App-System/ELF-x86-Format-string-bug-basic-1)
 ```

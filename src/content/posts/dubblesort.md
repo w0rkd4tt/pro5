@@ -7,7 +7,6 @@ summary: '[Pwnable.tw] – [Dubblesort](https://pwnable.tw/challenge/#4)...'
 tags: [security, writeup]
 ---
 
-## [Pwnable.tw] – [Dubblesort](https://pwnable.tw/challenge/#4)
 Tiếp theo chúng ta sẽ làm 1 bài sử dụng kỹ thuật ret2libc :3
 Kiểm tra các cơ chế bảo vệ và các thông tin cơ bản của file
 Sau đó dùng IDA để phân tích file binary và code C:

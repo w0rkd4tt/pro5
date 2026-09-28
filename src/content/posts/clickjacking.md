@@ -7,7 +7,6 @@ summary: 'Clickjacking...'
 tags: [security, writeup]
 ---
 
-# Clickjacking
 Nhân dịp trên mạng đang nổi trội những người thân bạn bè pay acc fb ngay trong 1 đêm thì mình có cảm hứng để làm về lổ hỗng [Clickjacking](https://portswigger.net/web-security/clickjacking)
 ## Clickjacking là gì ?
 Nói ngắn gọn dễ hiểu nhất là một hình thức tấn công đánh lừa người dùng nhấp chuột vô ý vào một đối tượng trên website(ví dụ cụ thể ở đây là fb). Khi nhấp chuột vào một đối tượng trên màn hình, người dùng nghĩ là mình đang click vào đối tượng đó nhưng thực chất họ đang bị lừa click vào một đối tượng khác > đã bị làm mờ hay ẩn đi. Kẻ tấn công có thể sử dụng kỹ thuật tấn công này cho nhiều mục đích. Đánh cắp tài khoản người dùng, lừa click vào quảng cáo để kiếm tiền, lừa like page hoặc nguy hiểm hơn là cài một webshell lên máy chủ web.

@@ -7,7 +7,6 @@ summary: 'Server-side request forgery (SSRF)...'
 tags: [security, writeup]
 ---
 
-# Server-side request forgery (SSRF)
 ## What is Server-side request forgery ?
 SSRF là 1 lỗ hổng bảo mật web cho phéo kẻ tấn công điều khiển ứng dụng phía máy chủ thực hiện các yêu cầu HTTP đến 1 tên miền tùy ý của hacker.
 Trong 1 cuộc tấn công SSRF điển hình thì hacker có thể kiến server tạo kết nối với các dịch vụ chỉ dành cho nội bộ trong cở sở hạ tầng của tổ chức. Trong các trường họp khác thì có thể buộc máy chủ kết nối với các hệ thống bên ngoài, có thể làm rõ rỉ dữ liệu nhạy cảm,..

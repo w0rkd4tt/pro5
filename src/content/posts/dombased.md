@@ -7,7 +7,6 @@ summary: 'DOM-based vulnerabilities...'
 tags: [security, writeup]
 ---
 
-# DOM-based vulnerabilities
 ## What is DOM-based vulnerabilities ?
 DOM viết tắt của Document Object Model là 1 dạng chuẩn của W3C đưa ra nhằm để truy xuất và thao tác dữ liệu của tài liệu có cấu trúc như HTML, XML.
 Mô hình này thể hiện tài liệu dưới dạng cấu trúc cây phân cấp. Tất cả các thành phần trong HTML, XML đều được xem như một node. DOM Based XSS là kỹ thuật khai

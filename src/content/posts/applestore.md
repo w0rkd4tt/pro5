@@ -7,7 +7,6 @@ summary: '[Pwnable.tw] – [Applestore](https://pwnable.tw/challenge/#7)...'
 tags: [security, writeup]
 ---
 
-## [Pwnable.tw] – [Applestore](https://pwnable.tw/challenge/#7)
 Chương trình là 1 cửa hàng bán điện thoại iphone.
 ##### main()
 ##### menu()

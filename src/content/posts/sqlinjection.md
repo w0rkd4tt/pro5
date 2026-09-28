@@ -7,7 +7,6 @@ summary: 'PortSwigger Web Security Academy Labs...'
 tags: [security, writeup]
 ---
 
-# PortSwigger Web Security Academy Labs
 ## SQL Injection
 ### [SQL injection vulnerability in WHERE clause allowing retrieval of hidden data]
 Đề bài yêu cầu chúng ta khai thác lỗ thông trong phần filter danh mục sản phẩm, và đã cho sẳn chúng ta câu truy vấn sql như sau:

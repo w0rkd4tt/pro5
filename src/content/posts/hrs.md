@@ -7,7 +7,6 @@ summary: 'HTTP Request Smuggling...'
 tags: [security, writeup]
 ---
 
-# HTTP Request Smuggling
 ## What is HTTP Request Smuggling ?
 HTTP request smuggling (HRS) là 1 kỹ thuật tấn công nhằm vào các HTTP server(web server, proxy server).
 Bất cứ khi nào 1 HTTP requset của client được phân tích bởi nhiều hơn 1 hệ thống thì đều có khả năng bị

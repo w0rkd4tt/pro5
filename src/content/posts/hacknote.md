@@ -7,7 +7,6 @@ summary: '[Pwnable.tw] – [hacknote](https://pwnable.tw/challenge/#5)...'
 tags: [security, writeup]
 ---
 
-## [Pwnable.tw] – [hacknote](https://pwnable.tw/challenge/#5)
 Check file và checksec ta thấy được vài điều sau:
 ```
 + File binary đã bị strip và là file 32 bit

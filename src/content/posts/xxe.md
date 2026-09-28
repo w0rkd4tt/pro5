@@ -7,7 +7,6 @@ summary: 'XML external entity injection (XXE)...'
 tags: [security, writeup]
 ---
 
-# XML external entity injection (XXE)
 ## What is XML enternal entity injection ?
 XML entermal entity injection hay còn được gọi là XXE injection là 1 lỗ hổng được đánh giá mức độ nghiêm trọng là 4/10 Web Application Secirity Risks của OWASP.
 XXE là một lỗ hổng bảo mật web cho phép hacker tấn công can thiệp vào quá trình xử lí dữ liệu XML của application.

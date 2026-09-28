@@ -7,7 +7,6 @@ summary: 'File upload vulnerabilities...'
 tags: [security, writeup]
 ---
 
-# File upload vulnerabilities
 ### What are file upload vulnerabilities? - Lỗ hổng tải lên file là gì?
 Lỗ hổng tải lên file là khi server web cho phép user tải file lên hệ thống file của nó mà không xác nhận đầy đủ những thứ như tên, loại, nội dung hoặc kích thước của chúng. Không thực thi đúng các hạn chế đối với những điều này có thể có nghĩa là ngay cả một chức năng tải lên hình ảnh cơ bản cũng có thể được sử dụng để tải lên các file tùy ý và có khả năng nguy hiểm. Điều này thậm chí có thể bao gồm các file kịch bản phía server cho phép thực thi mã từ xa.
 Trong một số trường hợp, bản thân hành động tải file lên đã đủ để gây ra thiệt hại. Các cuộc tấn công khác có thể liên quan đến một yêu cầu HTTP tiếp theo cho file, thường là để kích hoạt việc thực thi của nó bởi server.

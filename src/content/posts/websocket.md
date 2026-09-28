@@ -7,7 +7,6 @@ summary: '[WebSockets](https://portswigger.net/web-security/websockets)...'
 tags: [security, writeup]
 ---
 
-# [WebSockets](https://portswigger.net/web-security/websockets)
 WebSocket là một giao thức giúp truyền dữ liệu giữa mô hình client-server qua 1 kết nối TCP duy nhất. Giao thức này sử dụng port 80 và 443 và nó là 1 phần của HTML5. Vì vậy nên giao thức websocket có thể hoạt động trên các cổng web tiêu chuẩn.
 Không giống với giao thức HTTP là cần client chủ động gửi yêu cầu cho server, client sẽ chời đợi để nhận được dữ liệu từ server. Hay nói cách khác với giao thức Websocket thì server có thể chủ động gửi thông tin đến client mà không cần phải có yêu cầu từ client.
 WebSockets đặc biệt hữu ích trong các trường hợp yêu cầu độ trễ thấp hoặc thông báo do server khởi tạo, chẳng hạn như nguồn cấp dữ liệu tài chính theo thời gian thực.

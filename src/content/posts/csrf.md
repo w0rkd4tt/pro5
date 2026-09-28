@@ -7,7 +7,6 @@ summary: 'Cross-site Request Forgery...'
 tags: [security, writeup]
 ---
 
-# Cross-site Request Forgery
 ## What is Cros-site Request Forgery ? Also known as CSRF
 CSRF là một lỗ hổng web cho phép kẻ tấn công thực hiện các hành vi dựa trên người dùng, mà người dùng không nhận thức được các hành vi đó. Đây là một kỹ thuật mượn quyền trái phép.
 ## How to exploit CSRF ? Example
