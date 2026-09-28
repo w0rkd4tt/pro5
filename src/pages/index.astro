@@ -4,6 +4,7 @@ import { portfolio, site } from '../config/site';
 import { sitePath } from '../lib/paths';
 import { postPath } from '../lib/posts';
 import { cveRecords, cveOrder } from '../data/cves';
+import { latestBlogPosts } from '../data/blog';
 ---
 <BaseLayout title="Security Research Portfolio" currentPath="/">
   <section class="hero" id="home" aria-labelledby="hero-title">
@@ -45,6 +46,11 @@ import { cveRecords, cveOrder } from '../data/cves';
   {portfolio.publications.length > 0 && <section class="section reveal" id="publications" aria-labelledby="publications-title">
     <header class="section-title"><p>$ cat publications.log</p><h2 id="publications-title">Publications</h2><i></i></header>
     <div class="publication-grid">{portfolio.publications.map((publication) => <article class="publication-card"><p class="publication-venue">{publication.venue}</p><h3>{publication.title}</h3><p>{publication.description}</p><a class="button button-outline" href={publication.url.startsWith('/') ? sitePath(publication.url) : publication.url} target="_blank" rel="noreferrer">{publication.linkLabel} ↗</a></article>)}</div>
+  </section>}
+
+  {latestBlogPosts.length > 0 && <section class="section reveal" id="blog" aria-labelledby="blog-title">
+    <header class="section-title"><p>$ cat blog.log</p><h2 id="blog-title">Blog</h2><i></i></header>
+    <div class="blog-list">{latestBlogPosts.map((post) => <article><div><h3>{post.title}</h3></div><time>{post.date}</time><a class="button button-outline" href={post.sourceUrl} target="_blank" rel="noreferrer">Read on GitHub ↗</a></article>)}</div>
   </section>}
 
   <section class="section contact-section reveal" id="contact" aria-labelledby="contact-title">
